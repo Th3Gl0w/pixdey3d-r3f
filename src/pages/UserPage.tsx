@@ -52,7 +52,7 @@ export default function UserPage({ session }: { session: Session }) {
   };
   useEffect(() => {
     getRoomInfo();
-  }, [getRoomInfo]);
+  }, []);
   return (
     <>
       <div className="my-session-screen">
