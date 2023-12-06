@@ -3,6 +3,7 @@ import "./styles.css";
 
 import { ReactNode } from "react";
 import { supabase } from "../database/supabaseClient";
+import { NavLink } from "react-router-dom";
 
 export default function Layout({
   children,
@@ -32,11 +33,11 @@ export default function Layout({
           </a>
         </li>
         <li>
-          <a href="/create-3d-space">Create Session</a>
+          <NavLink to="/create-3d-space">Create Session</NavLink>
         </li>
         <li style={{ marginLeft: "auto" }}>
           {!session ? (
-            <a href="/create-3d-space">Log In</a>
+            <NavLink to="/create-3d-space">Log In</NavLink>
           ) : (
             <a onClick={() => supabase.auth.signOut()}>Log Out</a>
           )}
@@ -46,9 +47,9 @@ export default function Layout({
           style={{ border: "2px solid black" }}
         >
           {!session ? (
-            <a href="/create-3d-space">Join</a>
+            <NavLink to="/create-3d-space">Join</NavLink>
           ) : (
-            <a href={`/user/${session.user.id}`}>My Sessions</a>
+            <NavLink to={`/user/${session.user.id}`}>My Sessions</NavLink>
           )}
         </li>
       </ul>

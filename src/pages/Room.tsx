@@ -93,16 +93,15 @@ export default function Room({ session }: TSession) {
                     <div>Drag & Drop your 3D model here</div>
                     <div>
                       or{" "}
-                      <a
+                      <p
                         style={{
                           fontWeight: "700",
                           textDecoration: "underline !important",
                           color: "revert",
                         }}
-                        href="Google.com"
                       >
                         Click to Browse Files
-                      </a>
+                      </p>
                     </div>
                     <div style={{ fontSize: "16px", color: "#505050" }}>
                       Supported file formats : gltf, glb, obj
