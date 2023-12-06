@@ -17,12 +17,12 @@ import {
 } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { CameraControls } from "@react-three/drei";
-import ReactDOM from "react-dom";
 import styled from "styled-components";
 import { Session } from "@supabase/supabase-js";
 import { supabase } from "../database/supabaseClient";
 
 import { Annotation } from "../types/type";
+import * as ReactDOM from "react-dom";
 
 // const fakeData: Annotation[] = [
 //   {
