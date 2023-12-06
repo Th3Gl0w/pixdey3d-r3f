@@ -785,13 +785,13 @@ function App({ session, annotationData }: TSession) {
           <Annotations />
         </div>
 
-        <Suspense fallback={null}>
-          <Canvas
-            className="canvas"
-            ref={canvasRef}
-            camera={{ fov: 95, position: [2, 2, 5] }}
-          >
-            {/* <Suspense fallback={null}> */}
+        {/* <Suspense fallback={null}> */}
+        <Canvas
+          className="canvas"
+          ref={canvasRef}
+          camera={{ fov: 95, position: [2, 2, 5] }}
+        >
+          <Suspense fallback={null}>
             <CameraControls ref={cameraControlRef} />
             <Scene />
             {/* <OrbitControls
@@ -825,9 +825,9 @@ function App({ session, annotationData }: TSession) {
           </mesh> */}
             {/* <RedDotCursor /> */}
             <UpdateAnnotationPos />
-            {/* </Suspense> */}
-          </Canvas>
-        </Suspense>
+          </Suspense>
+        </Canvas>
+        {/* </Suspense> */}
       </Wrapper>
     </>
   );
