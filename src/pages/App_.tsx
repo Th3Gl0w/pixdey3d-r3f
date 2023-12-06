@@ -10,6 +10,7 @@ import {
   ChangeEvent,
   FormEvent,
   Fragment,
+  Suspense,
   useCallback,
   useEffect,
   useRef,
@@ -784,15 +785,16 @@ function App({ session, annotationData }: TSession) {
           <Annotations />
         </div>
 
-        <Canvas
-          className="canvas"
-          ref={canvasRef}
-          camera={{ fov: 95, position: [2, 2, 5] }}
-        >
-          {/* <Suspense fallback={null}> */}
-          <CameraControls ref={cameraControlRef} />
-          <Scene />
-          {/* <OrbitControls
+        <Suspense fallback={null}>
+          <Canvas
+            className="canvas"
+            ref={canvasRef}
+            camera={{ fov: 95, position: [2, 2, 5] }}
+          >
+            {/* <Suspense fallback={null}> */}
+            <CameraControls ref={cameraControlRef} />
+            <Scene />
+            {/* <OrbitControls
             makeDefault
             enableDamping={false}
             dampingFactor={0.6}
@@ -801,7 +803,7 @@ function App({ session, annotationData }: TSession) {
             minDistance={3}
             target={[0, 0, 0]}
           /> */}
-          {/* <PerspectiveCamera
+            {/* <PerspectiveCamera
               makeDefault
               // position={camInitialPos}
               fov={45}
@@ -809,22 +811,23 @@ function App({ session, annotationData }: TSession) {
               near={1}
               far={10000}
             /> */}
-          <primitive
-            object={scene}
-            onDoubleClick={(e: any) => {
-              setAnnoParams(e);
-              dialogRef.current?.showModal();
-            }}
-            // onPointerMove={(e: any) => moveSphereCursor(e)}
-          />
-          {/* <mesh visible position={spherePos}>
+            <primitive
+              object={scene}
+              onDoubleClick={(e: any) => {
+                setAnnoParams(e);
+                dialogRef.current?.showModal();
+              }}
+              // onPointerMove={(e: any) => moveSphereCursor(e)}
+            />
+            {/* <mesh visible position={spherePos}>
             <sphereGeometry args={[0.03, 16, 16]} />
             <meshStandardMaterial color="red" transparent />
           </mesh> */}
-          {/* <RedDotCursor /> */}
-          <UpdateAnnotationPos />
-          {/* </Suspense> */}
-        </Canvas>
+            {/* <RedDotCursor /> */}
+            <UpdateAnnotationPos />
+            {/* </Suspense> */}
+          </Canvas>
+        </Suspense>
       </Wrapper>
     </>
   );
