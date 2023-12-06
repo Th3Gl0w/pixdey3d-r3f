@@ -1,7 +1,7 @@
 import { Session } from "@supabase/supabase-js";
 import "./styles.css";
 
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { supabase } from "../database/supabaseClient";
 
 export default function Layout({

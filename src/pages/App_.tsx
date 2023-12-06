@@ -1,32 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "./App_.css";
-import AnnotationPopup from "../components/AnnotationPopup";
 // import AnnotationPanel from "./components/AnnotationPanel";
 import { useParams } from "react-router-dom";
 import Scene from "../components/Scene";
 import * as THREE from "three";
-import TWEEN from "@tweenjs/tween.js";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import {
   ChangeEvent,
   FormEvent,
   Fragment,
-  Suspense,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import {
-  useGLTF,
-  PerspectiveCamera,
-  OrbitControls,
-  CameraControls,
-} from "@react-three/drei";
+import { CameraControls } from "@react-three/drei";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import { PostgrestError, Session } from "@supabase/supabase-js";
+import { Session } from "@supabase/supabase-js";
 import { supabase } from "../database/supabaseClient";
 
 import { Annotation } from "../types/type";
@@ -130,20 +123,20 @@ type TSession = {
   annotationData: Annotation[];
 };
 function App({ session, annotationData }: TSession) {
-  const { id } = useParams();
+  const { id } = useParams<any>();
 
   const filteredAnoData = annotationData.filter((fileredData) =>
     fileredData.room_id !== id ? null : fileredData
   );
-  const [annotationList, setAnnotationList] = useState<Annotation[] | null>(
-    filteredAnoData ? filteredAnoData : null
+  const [annotationList, setAnnotationList] = useState<Annotation[]>(
+    filteredAnoData ? filteredAnoData : []
   );
   const anoLength = annotationList?.length;
   const annonCount = useRef(
     annotationList && anoLength ? annotationList[anoLength - 1].anno_id : 0
   );
   const [modelUrl, setModelUrl] = useState("");
-  const fileXtenHooks = useModelStore((state) => state.fileXtenHooks);
+  // const fileXtenHooks = useModelStore((state) => state.fileXtenHooks);
   const downLoadObj = useCallback(async () => {
     try {
       const { data, error } = await supabase.storage
@@ -155,8 +148,9 @@ function App({ session, annotationData }: TSession) {
       const url = URL.createObjectURL(data);
       // console.log(data);
       setModelUrl(url);
-    } catch (error) {
-      alert("Error downloading image: ", error.message);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      alert("Error downloading image: " + error.message);
     }
   }, [id]);
 
@@ -369,7 +363,7 @@ function App({ session, annotationData }: TSession) {
         if (error) {
           throw error;
         }
-      } catch (error) {
+      } catch (error: any) {
         alert(error.message);
       }
     }
@@ -404,7 +398,7 @@ function App({ session, annotationData }: TSession) {
         if (error) {
           throw error;
         }
-      } catch (error) {
+      } catch (error: any) {
         alert(error.message);
       } finally {
         // setAnnotationList((annotations: Annotation[]) =>
@@ -430,7 +424,7 @@ function App({ session, annotationData }: TSession) {
 
   const addAnnotation = async (
     event: FormEvent,
-    annoParams: PointerEvent,
+    annoParams: any,
     {
       annotationTitle,
       annotationContent,
@@ -475,7 +469,7 @@ function App({ session, annotationData }: TSession) {
         if (error) {
           throw error;
         }
-      } catch (error) {
+      } catch (error: any) {
         alert(error.message);
       } finally {
         setAnnotationContent("");
@@ -487,16 +481,16 @@ function App({ session, annotationData }: TSession) {
     }
   };
 
-  const [spherePos, setSpherePos] = useState<THREE.Vector3>(
-    new THREE.Vector3(0, 0, 0)
-  );
+  // const [spherePos, setSpherePos] = useState<THREE.Vector3>(
+  //   new THREE.Vector3(0, 0, 0)
+  // );
 
-  function moveSphereCursor(e: PointerEvent) {
-    const intersection = e.intersections.length > 0 ? e.intersections[0] : null;
-    if (intersection) {
-      setSpherePos(intersection.point);
-    }
-  }
+  // function moveSphereCursor(e) {
+  //   const intersection = e.intersections.length > 0 ? e.intersections[0] : null;
+  //   if (intersection) {
+  //     setSpherePos(intersection.point);
+  //   }
+  // }
 
   function Annotations() {
     const [anoNumClicked, setAnoNumClicked] = useState(false);
@@ -564,7 +558,7 @@ function App({ session, annotationData }: TSession) {
     );
   }
 
-  const camInitialPos = new THREE.Vector3(0, 2, 5);
+  // const camInitialPos = new THREE.Vector3(0, 2, 5);
 
   const cameraControlRef = useRef<CameraControls | null>(null);
   // cameraControlRef.current?.setPosition(0, 2, 5);
@@ -719,7 +713,7 @@ function App({ session, annotationData }: TSession) {
                   annotationStatus,
                 });
               } else {
-                addAnnotation(event, annoParams as PointerEvent, {
+                addAnnotation(event, annoParams as any, {
                   annotationTitle,
                   annotationContent,
                   annotationStatus,
@@ -818,11 +812,11 @@ function App({ session, annotationData }: TSession) {
             /> */}
           <primitive
             object={scene}
-            onDoubleClick={(e: PointerEvent) => {
+            onDoubleClick={(e: any) => {
               setAnnoParams(e);
               dialogRef.current?.showModal();
             }}
-            // onPointerMove={(e: PointerEvent) => moveSphereCursor(e)}
+            // onPointerMove={(e: any) => moveSphereCursor(e)}
           />
           {/* <mesh visible position={spherePos}>
             <sphereGeometry args={[0.03, 16, 16]} />

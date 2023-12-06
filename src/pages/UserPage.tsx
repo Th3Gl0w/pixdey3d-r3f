@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "./UserPage.css";
 import mysessions_svg from "../assets/mysession.svg";
 import { Session } from "@supabase/supabase-js";
@@ -13,7 +14,7 @@ type TRoom = {
 };
 export default function UserPage({ session }: { session: Session }) {
   const [roomInfo, setRoomInfo] = useState<TRoom[]>([]);
-  const { id } = useParams();
+  const { id } = useParams<any>();
   const getRoomInfo = useCallback(async () => {
     if (session.user.id === id) {
       try {
@@ -27,7 +28,7 @@ export default function UserPage({ session }: { session: Session }) {
         if (data) {
           setRoomInfo(data);
         }
-      } catch (error) {
+      } catch (error: any) {
         alert(error.message);
       }
     }
@@ -40,7 +41,7 @@ export default function UserPage({ session }: { session: Session }) {
         if (error) {
           throw error;
         }
-      } catch (error) {
+      } catch (error: any) {
         alert(error.message);
       } finally {
         setRoomInfo((rooms: TRoom[]) =>
@@ -89,7 +90,7 @@ export default function UserPage({ session }: { session: Session }) {
                         View session
                       </a>
                       <button
-                        onClick={() => deleteRoom(room.id)}
+                        onClick={() => deleteRoom(room.id as number)}
                         className="button-my-session-delete"
                       >
                         Delete
