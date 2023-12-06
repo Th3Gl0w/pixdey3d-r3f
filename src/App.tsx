@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import "./index.css";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { Session } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
 
@@ -60,83 +60,85 @@ export default function App() {
   }, [getAnnotation]);
 
   return (
-    <Router>
-      <Route exact path="/">
-        <Layout session={session}>
-          <Home />
-        </Layout>
-      </Route>
-      <Route exact path="/create-3d-space">
-        {!session ? (
+    <Suspense fallback="..loading">
+      <Router>
+        <Route exact path="/">
           <Layout session={session}>
-            <LoginPage>
-              <Auth
-                supabaseClient={supabase}
-                appearance={{
-                  className: {
-                    button: "login-button",
-                    label: "login-input-fieldname",
-                    input: "login-input",
-                    container: "login-input-container",
-                  },
-                }}
-                providers={[]}
-              />
-            </LoginPage>
+            <Home />
           </Layout>
-        ) : (
-          <Layout session={session}>
-            <Room session={session} />
-          </Layout>
-        )}
-      </Route>
-      <Route exact path="/user/:id">
-        {!session ? (
-          <Layout session={session}>
-            <LoginPage>
-              <Auth
-                supabaseClient={supabase}
-                appearance={{
-                  className: {
-                    button: "login-button",
-                    label: "login-input-fieldname",
-                    input: "login-input",
-                    container: "login-input-container",
-                  },
-                }}
-                providers={[]}
-              />
-            </LoginPage>
-          </Layout>
-        ) : (
-          <Layout session={session}>
-            <UserPage session={session} />
-          </Layout>
-        )}
-      </Route>
-      <Route path="/room/:id">
-        {!session ? (
-          <Layout session={session}>
-            <LoginPage>
-              <Auth
-                supabaseClient={supabase}
-                appearance={{
-                  className: {
-                    button: "login-button",
-                    label: "login-input-fieldname",
-                    input: "login-input",
-                    container: "login-input-container",
-                  },
-                }}
-                providers={[]}
-              />
-            </LoginPage>
-          </Layout>
-        ) : (
-          <App_ session={session} annotationData={annotationData} />
-        )}
-      </Route>
-    </Router>
+        </Route>
+        <Route exact path="/create-3d-space">
+          {!session ? (
+            <Layout session={session}>
+              <LoginPage>
+                <Auth
+                  supabaseClient={supabase}
+                  appearance={{
+                    className: {
+                      button: "login-button",
+                      label: "login-input-fieldname",
+                      input: "login-input",
+                      container: "login-input-container",
+                    },
+                  }}
+                  providers={[]}
+                />
+              </LoginPage>
+            </Layout>
+          ) : (
+            <Layout session={session}>
+              <Room session={session} />
+            </Layout>
+          )}
+        </Route>
+        <Route exact path="/user/:id">
+          {!session ? (
+            <Layout session={session}>
+              <LoginPage>
+                <Auth
+                  supabaseClient={supabase}
+                  appearance={{
+                    className: {
+                      button: "login-button",
+                      label: "login-input-fieldname",
+                      input: "login-input",
+                      container: "login-input-container",
+                    },
+                  }}
+                  providers={[]}
+                />
+              </LoginPage>
+            </Layout>
+          ) : (
+            <Layout session={session}>
+              <UserPage session={session} />
+            </Layout>
+          )}
+        </Route>
+        <Route path="/room/:id">
+          {!session ? (
+            <Layout session={session}>
+              <LoginPage>
+                <Auth
+                  supabaseClient={supabase}
+                  appearance={{
+                    className: {
+                      button: "login-button",
+                      label: "login-input-fieldname",
+                      input: "login-input",
+                      container: "login-input-container",
+                    },
+                  }}
+                  providers={[]}
+                />
+              </LoginPage>
+            </Layout>
+          ) : (
+            <App_ session={session} annotationData={annotationData} />
+          )}
+        </Route>
+      </Router>
+    </Suspense>
   );
   // return <App_ session={session} annotationData={annotationData} />;
 }
