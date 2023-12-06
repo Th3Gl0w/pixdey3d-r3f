@@ -1,0 +1,169 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  /* place-items: center;
+  min-width: 320px;
+  min-height: 100vh; */
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 0px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+/* button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+select {
+  border-radius: 0px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.annotation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin-left: 15px;
+  margin-top: 15px;
+  width: 200px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 0.5em;
+  font-size: 12px;
+  line-height: 1.2;
+  transition: opacity 0.5s;
+
+  /* For numbers */
+  &::before {
+    content: "1";
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+#number {
+  position: absolute;
+  z-index: -1;
+}
+
+.number {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.annon_content {
+  padding: 1em;
+}
+
+.annotation-popup {
+  width: 400px;
+  height: 500px;
+  display: grid;
+  position: absolute;
+  z-index: 2;
+  border: 1px solid #000000;
+}
+
+.annotation-popup-input {
+  width: 90%;
+  min-height: 200px;
+  padding: 10px;
+  margin: auto;
+}
+
+#r {
+  /* position: fixed;
+  top: 0;
+  right: 0; */
+  width: 350px;
+  /* height: 100%; */
+  background-color: #646cff;
+  border-left: 1px solid #353535;
+  padding: 10px;
+  z-index: 1;
+}
+
+.btn_resetview {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.annonpanel_item {
+  border: 2px solid black;
+  text-align: left;
+  padding: 10px;
+  margin: 5px;
+}
+a {
+  color: inherit;
+}

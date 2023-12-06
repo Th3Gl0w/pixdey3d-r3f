@@ -1,0 +1,85 @@
+.my-session-screen {
+  text-align: center;
+  /* background: #cedaf9; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 109px;
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, grey 1px, transparent 1px),
+    linear-gradient(to bottom, grey 1px, transparent 1px);
+}
+
+.my-session-container {
+  background: #fff;
+  width: 900px;
+  height: 100vh;
+  border: 2px solid black;
+  margin: auto;
+}
+
+.my-session-svg-container {
+  height: 15%;
+  background: #f496bf;
+  border-bottom: 2px solid black;
+}
+
+.my-session-item-container {
+  height: 75%;
+  overflow: scroll;
+}
+
+.my-session-item {
+  text-align: left;
+  display: flex;
+  padding: 30px;
+  border-bottom: 2px solid black;
+}
+
+.my-session-thumbnail {
+  width: 300px;
+  height: 240px;
+}
+
+.my-session-item-right {
+  margin: 0 50px;
+}
+
+.my-session-name {
+  font-size: 24px;
+  margin: 20px 0px;
+}
+
+.my-session-description {
+  font-size: 16px;
+  margin: 10px 0px;
+  color: #505050;
+}
+
+.button-my-session-view {
+  background: #cce687;
+  border: 2px solid black;
+  font-size: 16px;
+  margin: 40px 0 0 0;
+  padding: 10px 20px;
+}
+
+.button-my-session-view:hover {
+  background: #9dd20a;
+}
+
+.button-my-session-delete {
+  font-size: 16px;
+  color: #505050;
+  background: transparent;
+  border: 0;
+  margin: 40px 0 0 20px;
+  padding: 10px 20px;
+}
+.button-my-session-delete:focus {
+  outline: none;
+}
+.button-my-session-delete:hover {
+  color: #9dd112;
+}

@@ -1,0 +1,105 @@
+.loginscreen {
+  text-align: center;
+  background: #cedaf9;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 109px;
+}
+
+.signupscreen {
+  text-align: center;
+  background: #f1daf5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 109px;
+}
+
+.login-container {
+  width: 520px;
+  height: 580px;
+  border: 2px solid black;
+  background: #ffffff;
+  filter: drop-shadow(4px 4px 0px #000);
+  margin: auto;
+}
+
+.login-input-container {
+  /* width: 344px; */
+  padding-top: 5% !important;
+  display: flex !important;
+  margin: auto !important;
+  align-items: center !important;
+}
+
+.login-input {
+  width: 260px !important;
+  height: 50px !important;
+  margin: 20px 0 !important;
+  font-size: 16px !important;
+  background: #edebf0 !important;
+  border: 0px !important;
+  padding-left: 16px !important;
+}
+
+.login-input-fieldname {
+  margin-right: 5px;
+  display: inline-block !important;
+  width: 80px !important;
+  font-size: 18px !important;
+}
+
+.login-button {
+  width: 344px !important;
+  height: 80px !important;
+  margin: 40px auto 20px auto !important;
+  font-size: 24px !important;
+  background: #cce687 !important;
+  border: 2px solid black !important;
+}
+
+.login-button:hover {
+  background: #9dd20a !important;
+  /* color: #fff; */
+}
+
+.oauth-button {
+  width: 344px;
+  height: 60px;
+  margin: auto;
+  font-size: 18px;
+  background: #ffffff;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-wrap: nowrap;
+}
+
+.oauth-button svg {
+  margin-left: 10px;
+  float: left;
+}
+
+.oauth-button:hover {
+  background: black;
+  color: #ffffff;
+}
+
+.oauth-button:hover svg {
+  fill: #fff;
+}
+
+/* style: {
+    button: {
+      width: "344px",
+      height: "80px",
+      margin: "40px auto 20px auto",
+      fontSize: "24px",
+      background: "#cce687",
+      border: "2px solid black",
+    },
+  }, */

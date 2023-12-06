@@ -1,0 +1,74 @@
+.homescreen {
+  text-align: center;
+}
+
+.getstarted-container {
+  position: relative;
+  width: 300px;
+  height: 130px;
+  margin-top: 30vh;
+  margin-left: 52vw;
+}
+
+.getstarted-text {
+  margin-top: 53px;
+  margin-left: 110px;
+  position: fixed;
+  z-index: 1;
+}
+
+.getstarted {
+  clip-path: ellipse(50% 50%);
+  width: 300px;
+  height: 130px;
+  background-color: black;
+  animation: rotate-ellipse 2s ease-in-out infinite;
+}
+
+.getstarted-container .getstarted:hover {
+  animation: rotate-ellipse2 4s ease-in-out infinite;
+}
+
+.getstarted-container .small-getstarted:hover {
+  /* background: black; */
+  background: radial-gradient(
+    circle,
+    rgb(252, 194, 69) 30%,
+    rgba(253, 29, 29, 1) 100%
+  );
+}
+
+/* .getstarted-container:hover .getstarted-text {
+ color: #cce687; 
+} */
+
+.small-getstarted {
+  clip-path: ellipse(49.5% 49%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #cce687;
+}
+
+@keyframes rotate-ellipse {
+  from {
+    transform: rotate(-25deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+  to {
+    transform: rotate(-25deg);
+  }
+}
+
+@keyframes rotate-ellipse2 {
+  from {
+    transform: rotate(-25deg);
+  }
+  to {
+    transform: rotate(-385deg);
+  }
+}
