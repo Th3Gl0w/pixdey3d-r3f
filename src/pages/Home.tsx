@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import "./home.css";
 
 export default function Home() {
@@ -24,11 +25,11 @@ export default function Home() {
         <div className="getstarted-container">
           <p className="getstarted-text">Get Started</p>
           <div className="getstarted">
-            <a href="/create-3d-space">
+            <NavLink to="/create-3d-space">
               <div className="small-getstarted">
                 {/* <div style={{ marginTop: "53px" }}>Get Started</div> */}
               </div>
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
