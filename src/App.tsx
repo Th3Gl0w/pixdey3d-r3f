@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "./index.css";
 import { useState, useEffect, useCallback } from "react";
 import { Session } from "@supabase/supabase-js";
 import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
+
 import App_ from "./pages/App_";
 import { supabase } from "./database/supabaseClient";
 import { Annotation } from "./types/type";
@@ -38,7 +39,7 @@ export default function App() {
       if (data) {
         setAnnotationData(data);
       }
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   }, []);

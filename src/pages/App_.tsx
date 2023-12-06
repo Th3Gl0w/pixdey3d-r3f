@@ -23,7 +23,6 @@ import { Session } from "@supabase/supabase-js";
 import { supabase } from "../database/supabaseClient";
 
 import { Annotation } from "../types/type";
-import { useModelStore } from "../store";
 
 // const fakeData: Annotation[] = [
 //   {
@@ -567,7 +566,7 @@ function App({ session, annotationData }: TSession) {
     const { camera } = useThree();
 
     useFrame(() => {
-      annotationList?.map((annon, index) => {
+      annotationList?.map((annon) => {
         const vector = new THREE.Vector3(
           annon.position.x,
           annon.position.y,
@@ -575,7 +574,7 @@ function App({ session, annotationData }: TSession) {
         );
         const targetdiv = document.querySelector(
           `#annotation-${annon.anno_id}`
-        );
+        ) as HTMLElement;
 
         vector.project(camera);
 
@@ -585,7 +584,7 @@ function App({ session, annotationData }: TSession) {
 
         // // const rect = renderer.domElement.getBoundingClientRect();
         // const rect = canvasRef.current.getBoundingClientRect();
-        const element = ReactDOM.findDOMNode(canvasRef.current);
+        const element = ReactDOM.findDOMNode(canvasRef.current) as HTMLElement;
         const rect = element?.getBoundingClientRect();
 
         vector.x =
@@ -598,7 +597,7 @@ function App({ session, annotationData }: TSession) {
         if (targetdiv) {
           targetdiv.style.top = `${vector.y}px`;
           targetdiv.style.left = `${vector.x}px`;
-          targetdiv.style.opacity = isBehind ? 0.25 : 1;
+          targetdiv.style.opacity = isBehind ? "0.25" : "1";
         }
       });
     });

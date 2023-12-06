@@ -1,13 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Dropzone from "react-dropzone";
 import { useModelStore } from "../store";
 import { useHistory } from "react-router-dom";
-import FolderImage from "../assets/folder.png";
 import { supabase } from "../database/supabaseClient";
 import { Session } from "@supabase/gotrue-js";
 import "./Room.css";
 import createsession_svg from "../assets/createsession.svg";
 import startfromtemplates_svg from "../assets/startfromtemplate.svg";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 
 type TSession = {
   session: Session;
@@ -24,8 +24,8 @@ export default function Room({ session }: TSession) {
   );
   const history = useHistory();
 
-  const handleDrop = (acceptedFiles) => {
-    acceptedFiles.map(async (file) => {
+  const handleDrop = (acceptedFiles: any) => {
+    acceptedFiles.map(async (file: any) => {
       console.log(file);
       const urrl = URL.createObjectURL(file);
       console.log(urrl);
@@ -41,7 +41,7 @@ export default function Room({ session }: TSession) {
         if (uploadError) {
           throw uploadError;
         }
-      } catch (error) {
+      } catch (error: any) {
         alert(error.message);
       } finally {
         const { error } = await supabase.from("room").insert({
