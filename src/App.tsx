@@ -84,6 +84,18 @@ export default function App() {
                       container: "login-input-container",
                     },
                   }}
+                  localization={{
+                    variables: {
+                      sign_in: {
+                        email_label: "Email",
+                        password_label: "Password",
+                      },
+                      sign_up: {
+                        email_label: "Email",
+                        password_label: "Password",
+                      },
+                    },
+                  }}
                   providers={[]}
                 />
               </LoginPage>
@@ -110,6 +122,18 @@ export default function App() {
                     },
                   }}
                   providers={[]}
+                  localization={{
+                    variables: {
+                      sign_in: {
+                        email_label: "Email",
+                        password_label: "Password",
+                      },
+                      sign_up: {
+                        email_label: "Email",
+                        password_label: "Password",
+                      },
+                    },
+                  }}
                 />
               </LoginPage>
             </Layout>
@@ -135,6 +159,18 @@ export default function App() {
                     },
                   }}
                   providers={[]}
+                  localization={{
+                    variables: {
+                      sign_in: {
+                        email_label: "Email",
+                        password_label: "Password",
+                      },
+                      sign_up: {
+                        email_label: "Email",
+                        password_label: "Password",
+                      },
+                    },
+                  }}
                 />
               </LoginPage>
             </Layout>
