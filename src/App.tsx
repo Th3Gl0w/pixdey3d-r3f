@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import Layout from "./layout/Layout";
 import LoginPage from "./pages/LoginPage";
 import "./pages/LoginPage.css";
+import { ViewType } from "@supabase/auth-ui-shared";
 
 //TODO :
 // - pass the session object as child to app component
@@ -25,6 +26,7 @@ import "./pages/LoginPage.css";
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [annotationData, setAnnotationData] = useState<Annotation[]>([]);
+  const [loginView, setLoginView] = useState<ViewType>("sign_in");
   const getAnnotation = useCallback(async () => {
     try {
       const { data, error } = await supabase
@@ -63,16 +65,17 @@ export default function App() {
     <Suspense fallback="..loading">
       <Router>
         <Route exact path="/">
-          <Layout session={session}>
+          <Layout session={session} setLoginViewFunc={setLoginView}>
             <Home />
           </Layout>
         </Route>
         <Route exact path="/create-3d-space">
           {!session ? (
-            <Layout session={session}>
-              <LoginPage>
+            <Layout session={session} setLoginViewFunc={setLoginView}>
+              <LoginPage loginView={loginView}>
                 <Auth
                   supabaseClient={supabase}
+                  view={loginView}
                   appearance={{
                     className: {
                       button: "login-button",
@@ -86,17 +89,18 @@ export default function App() {
               </LoginPage>
             </Layout>
           ) : (
-            <Layout session={session}>
+            <Layout session={session} setLoginViewFunc={setLoginView}>
               <Room session={session} />
             </Layout>
           )}
         </Route>
         <Route exact path="/user/:id">
           {!session ? (
-            <Layout session={session}>
-              <LoginPage>
+            <Layout session={session} setLoginViewFunc={setLoginView}>
+              <LoginPage loginView={loginView}>
                 <Auth
                   supabaseClient={supabase}
+                  view={loginView}
                   appearance={{
                     className: {
                       button: "login-button",
@@ -110,17 +114,18 @@ export default function App() {
               </LoginPage>
             </Layout>
           ) : (
-            <Layout session={session}>
+            <Layout session={session} setLoginViewFunc={setLoginView}>
               <UserPage session={session} />
             </Layout>
           )}
         </Route>
         <Route path="/room/:id">
           {!session ? (
-            <Layout session={session}>
-              <LoginPage>
+            <Layout session={session} setLoginViewFunc={setLoginView}>
+              <LoginPage loginView={loginView}>
                 <Auth
                   supabaseClient={supabase}
+                  view={loginView}
                   appearance={{
                     className: {
                       button: "login-button",

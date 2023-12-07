@@ -1,22 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Session } from "@supabase/supabase-js";
 import "./styles.css";
 
 import { ReactNode } from "react";
 import { supabase } from "../database/supabaseClient";
-import { NavLink } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 export default function Layout({
   children,
   session,
+  setLoginViewFunc,
 }: {
   children: ReactNode;
   session: Session | null;
+  setLoginViewFunc: any;
 }) {
   return (
     <div className="Layout">
       <ul className="header">
         <li>
-          <a>
+          <a href="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 849.43 259.37"
@@ -33,11 +37,11 @@ export default function Layout({
           </a>
         </li>
         <li>
-          <NavLink to="/create-3d-space">Create Session</NavLink>
+          <a href="/create-3d-space">Create Session</a>
         </li>
         <li style={{ marginLeft: "auto" }}>
           {!session ? (
-            <NavLink to="/create-3d-space">Log In</NavLink>
+            <a href="/create-3d-space">Log In</a>
           ) : (
             <a onClick={() => supabase.auth.signOut()}>Log Out</a>
           )}
@@ -47,13 +51,20 @@ export default function Layout({
           style={{ border: "2px solid black" }}
         >
           {!session ? (
-            <NavLink to="/create-3d-space">Join</NavLink>
+            <Link
+              onClick={() => setLoginViewFunc("sign_up")}
+              to="/create-3d-space"
+            >
+              Join
+            </Link>
           ) : (
-            <NavLink to={`/user/${session.user.id}`}>My Sessions</NavLink>
+            <a href={`/user/${session.user.id}`}>My Sessions</a>
           )}
         </li>
       </ul>
-      <div className="container">{children}</div>
+      <div className="container" style={{ overflow: "scroll" }}>
+        {children}
+      </div>
     </div>
   );
 }

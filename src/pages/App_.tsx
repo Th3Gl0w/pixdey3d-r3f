@@ -24,6 +24,8 @@ import { supabase } from "../database/supabaseClient";
 
 import { Annotation } from "../types/type";
 import * as ReactDOM from "react-dom";
+import editsvg from "../assets/edit.svg";
+import trashcansvg from "../assets/trashcan.svg";
 
 // const fakeData: Annotation[] = [
 //   {
@@ -521,6 +523,7 @@ function App({ session, annotationData }: TSession) {
                   annon.normal?.z?.toString()
                 }
                 data-contentvisible="hidden"
+                style={{ textAlign: "left" }}
               >
                 <div
                   className="number"
@@ -536,14 +539,20 @@ function App({ session, annotationData }: TSession) {
                   style={{
                     display:
                       anoNumClicked && annon.anno_id === anoRef.current
-                        ? "none"
-                        : "grid",
+                        ? "grid"
+                        : "none",
                   }}
                 >
-                  <div style={{ display: "flex" }}>
+                  <div>
                     <div style={{ float: "left" }}>{annon.status}</div>
-                    <button style={{ float: "right" }}>Delete</button>
-                    <button style={{ float: "right" }}>Edit</button>
+                    <div style={{ float: "right" }}>
+                      <button>
+                        <img src={editsvg} alt="edit" />
+                      </button>
+                      <button>
+                        <img src={trashcansvg} alt="delete" />
+                      </button>
+                    </div>
                   </div>
                   <div style={{ fontWeight: "600", textAlign: "left" }}>
                     {annon.username}
@@ -623,7 +632,7 @@ function App({ session, annotationData }: TSession) {
                 style={{ float: "right", color: "#fff" }}
                 onClick={() => deleteAnnotation(annon as Annotation)}
               >
-                Delete
+                <img src={trashcansvg} alt="edit" />
               </button>
               <button
                 style={{ float: "right", color: "#fff" }}
@@ -636,7 +645,7 @@ function App({ session, annotationData }: TSession) {
                   dialogRef.current?.showModal();
                 }}
               >
-                Edit
+                <img src={editsvg} alt="edit" />
               </button>
             </div>
             <div style={{ fontWeight: "600", textAlign: "left" }}>
@@ -778,7 +787,7 @@ function App({ session, annotationData }: TSession) {
         </dialog>
         {/* <button className="btn_resetview">Reset view</button> */}
         <div id="r">
-          <div>Annotation Panel</div>
+          <div style={{ fontWeight: 700 }}>Annotation Panel</div>
           <AnnotationPanel />
         </div>
         <div className="hello">
@@ -789,7 +798,7 @@ function App({ session, annotationData }: TSession) {
         <Canvas
           className="canvas"
           ref={canvasRef}
-          camera={{ fov: 95, position: [2, 2, 5] }}
+          camera={{ fov: 50, position: [2, 2, 5] }}
         >
           <Suspense fallback={null}>
             <CameraControls ref={cameraControlRef} />

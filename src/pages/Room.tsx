@@ -129,42 +129,54 @@ export default function Room({ session }: TSession) {
           <div className="scroll-container-2">
             <img src={startfromtemplates_svg} style={{ width: "500px" }} />
             <div className="template-container">
-              <img
-                className="template-item"
-                src={
-                  "https://img.animalplanet.co.kr/news/2020/05/20/700/al43zzl8j3o72bkbux29.jpg"
-                }
-              />
-              <img
-                className="template-item"
-                src={
-                  "https://img.animalplanet.co.kr/news/2020/05/20/700/al43zzl8j3o72bkbux29.jpg"
-                }
-              />
-              <img
-                className="template-item"
-                src={
-                  "https://img.animalplanet.co.kr/news/2020/05/20/700/al43zzl8j3o72bkbux29.jpg"
-                }
-              />
-              <img
-                className="template-item"
-                src={
-                  "https://img.animalplanet.co.kr/news/2020/05/20/700/al43zzl8j3o72bkbux29.jpg"
-                }
-              />{" "}
-              <img
-                className="template-item"
-                src={
-                  "https://img.animalplanet.co.kr/news/2020/05/20/700/al43zzl8j3o72bkbux29.jpg"
-                }
-              />
-              <img
-                className="template-item"
-                src={
-                  "https://img.animalplanet.co.kr/news/2020/05/20/700/al43zzl8j3o72bkbux29.jpg"
-                }
-              />
+              <a href="/room/7923278312647395-01_Shoes.gltf">
+                <img
+                  className="template-item"
+                  src={
+                    "https://cdn.discordapp.com/attachments/338396901802115073/1182093459318906951/01_Shoes.png?ex=65837152&is=6570fc52&hm=6183de857fab92830387d57eca3a7882f8ae5fca1f3e52cb0aa858486e05dd1b&"
+                  }
+                />
+              </a>
+              <a href="/room/08860931423931873-03_Clock.gltf">
+                <img
+                  className="template-item"
+                  src={
+                    "https://cdn.discordapp.com/attachments/338396901802115073/1182094216655024208/02_Clock.png?ex=65837207&is=6570fd07&hm=9da9a8b012a0db079630da982fe1de0aeee39dde3796220c5663f96485c8b0cc&"
+                  }
+                />
+              </a>
+              <a href="/room/2954125685863136-03_can.gltf">
+                <img
+                  className="template-item"
+                  src={
+                    "https://cdn.discordapp.com/attachments/338396901802115073/1182094735503020062/03_can.png?ex=65837283&is=6570fd83&hm=f1598c926243daf5741dda54f4f904e927c77cdaa67ea309ec966d52f1604cda&"
+                  }
+                />
+              </a>
+              <a href="/room/6016229013372625-04_Globe.gltf">
+                <img
+                  className="template-item"
+                  src={
+                    "https://cdn.discordapp.com/attachments/338396901802115073/1182094735293296712/04_Globe.png?ex=65837283&is=6570fd83&hm=d1ddbb9ca3c5b25a317af87d7596e9017cde2d0239e58d887c9cf8370ae3283a&"
+                  }
+                />{" "}
+              </a>
+              <a href="/room/2435136727033076-05_Camera.gltf">
+                <img
+                  className="template-item"
+                  src={
+                    "https://cdn.discordapp.com/attachments/338396901802115073/1182094735041630288/05_Camera.png?ex=65837283&is=6570fd83&hm=1a8f30f3ca8b810fb6453bcb649f6df4d9d293d3d0a1421e344532937eb13499&"
+                  }
+                />
+              </a>
+              <a href="/room/014478852166890821-06_powerpuff.gltf">
+                <img
+                  className="template-item"
+                  src={
+                    "https://cdn.discordapp.com/attachments/338396901802115073/1182094734806765728/06_powerpuff.png?ex=65837283&is=6570fd83&hm=1aa9d50864ed1e27297c753b574481dc9b684d0aa60f0963ea29001091ae8842&"
+                  }
+                />
+              </a>
             </div>
           </div>
         </div>

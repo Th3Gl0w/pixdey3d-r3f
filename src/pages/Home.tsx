@@ -1,10 +1,12 @@
-import { NavLink } from "react-router-dom";
 import "./home.css";
 
 export default function Home() {
   return (
     <>
-      <div className="homescreen">
+      <div
+        className="homescreen"
+        style={{ height: "100%", minHeight: "100vh" }}
+      >
         <svg
           id="logo_header"
           xmlns="http://www.w3.org/2000/svg"
@@ -22,14 +24,20 @@ export default function Home() {
         <p style={{ fontSize: "28px" }}>
           Where 3D design collaboration meets simplicity.
         </p>
+        <img
+          src="https://cdn.discordapp.com/attachments/897129646385147914/1182112710821937242/Sequence_01.gif?ex=65838340&is=65710e40&hm=412a8ef9cf8a127684ad89140cd77461338b77157f08dd5ad68673108568c494&"
+          alt="gif_astrojaggernaut"
+          width={750}
+          height={480}
+        />
         <div className="getstarted-container">
           <p className="getstarted-text">Get Started</p>
           <div className="getstarted">
-            <NavLink to="/create-3d-space">
+            <a href="/create-3d-space">
               <div className="small-getstarted">
                 {/* <div style={{ marginTop: "53px" }}>Get Started</div> */}
               </div>
-            </NavLink>
+            </a>
           </div>
         </div>
       </div>

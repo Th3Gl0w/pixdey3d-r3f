@@ -4,7 +4,7 @@ import mysessions_svg from "../assets/mysession.svg";
 import { Session } from "@supabase/supabase-js";
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "../database/supabaseClient";
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 type TRoom = {
   id?: number;
   owner_id: string;
@@ -83,12 +83,12 @@ export default function UserPage({ session }: { session: Session }) {
                         Last updated :{" "}
                         {new Date(room.updated_at).toDateString()}
                       </div>
-                      <NavLink
-                        to={`/room/${room.model_id}`}
+                      <a
+                        href={`/room/${room.model_id}`}
                         className="button-my-session-view"
                       >
                         View session
-                      </NavLink>
+                      </a>
                       <button
                         onClick={() => deleteRoom(room.id as number)}
                         className="button-my-session-delete"
